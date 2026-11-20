@@ -1,0 +1,17 @@
+name: search
+in: query
+required: false
+description: |
+  Kata kunci pencarian full-text (FTS) yang dicocokkan ke seluruh field teks
+  user (`username`, `name`). Kosongkan untuk mengambil semua data tanpa filter.
+  Perilaku pencocokan (tokenisasi, stemming, ranking) ditentukan server.
+schema:
+  type: string
+  minLength: 1
+  maxLength: 100
+style: form
+explode: true
+examples:
+  byName:
+    summary: Cari kata "santoso"
+    value: santoso

@@ -58,10 +58,8 @@ components:
       $ref: './components/parameters/Sort.yaml'
     Order:
       $ref: './components/parameters/Order.yaml'
-    UsernameFilter:
-      $ref: './components/parameters/UsernameFilter.yaml'
-    NameFilter:
-      $ref: './components/parameters/NameFilter.yaml'
+    Search:
+      $ref: './components/parameters/Search.yaml'
     Uuid:
       $ref: './components/parameters/Uuid.yaml'
   responses:

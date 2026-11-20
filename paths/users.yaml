@@ -2,7 +2,7 @@ get:
   summary: List users
   description: |
     Mengembalikan daftar user dengan cursor pagination berbasis `after`, plus
-    filter dan sorting. Response tidak memuat password.
+    pencarian full-text dan sorting. Response tidak memuat password.
   operationId: listUsers
   tags:
     - Users
@@ -11,8 +11,7 @@ get:
     - $ref: '../components/parameters/After.yaml'
     - $ref: '../components/parameters/Sort.yaml'
     - $ref: '../components/parameters/Order.yaml'
-    - $ref: '../components/parameters/UsernameFilter.yaml'
-    - $ref: '../components/parameters/NameFilter.yaml'
+    - $ref: '../components/parameters/Search.yaml'
   responses:
     '200':
       description: Daftar user berhasil diambil.

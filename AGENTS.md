@@ -89,7 +89,9 @@ Semua error memakai envelope yang sama:
 - Response: `{ "data": [...], "nextAfter": "<uuid>" | null }`.
 - Sorting lewat query `sort` + `order`. Nilai default (field dan arah) ditentukan
   server; spec hanya mendokumentasikan nilai yang didukung.
-- Filter didokumentasikan sebagai `parameters` (per field) dengan `style: form`.
+- Filter dilakukan lewat satu query `search` (full-text search) yang dicocokkan
+  ke seluruh field teks resource. Tidak ada filter per-field pada kontrak ini.
+- Pencarian dan sorting tetap bisa digabung dengan pagination `after`.
 
 ## Validasi
 
