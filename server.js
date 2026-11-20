@@ -8,32 +8,7 @@ const swaggerAssets = swaggerUiDist.getAbsoluteFSPath();
 
 const app = new Hono();
 
-app.get('/docs', (c) =>
-  c.html(`<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>API Docs</title>
-    <link rel="stylesheet" href="/docs/swagger-ui.css" />
-  </head>
-  <body>
-    <div id="swagger-ui"></div>
-    <script src="/docs/swagger-ui-bundle.js" crossorigin></script>
-    <script src="/docs/swagger-ui-standalone-preset.js" crossorigin></script>
-    <script>
-      window.ui = SwaggerUIBundle({
-        url: '/openapi.yaml',
-        dom_id: '#swagger-ui',
-        deepLinking: true,
-        presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
-        plugins: [SwaggerUIBundle.plugins.DownloadUrl],
-        layout: 'StandaloneLayout',
-      });
-    </script>
-  </body>
-</html>`),
-);
+app.get('/docs', serveStatic({ path: './public/docs.html' }));
 
 app.get('/', (c) => c.redirect('/docs'));
 
