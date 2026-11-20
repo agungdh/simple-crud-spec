@@ -1,0 +1,44 @@
+type: object
+description: Envelope error yang dipakai seluruh endpoint.
+required:
+  - error
+properties:
+  error:
+    type: object
+    description: Isi error.
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+        description: Kode error yang stabil dan bisa dipakai untuk branching di client.
+        enum:
+          - VALIDATION_ERROR
+          - UNAUTHORIZED
+          - FORBIDDEN
+          - NOT_FOUND
+          - CONFLICT
+          - UNPROCESSABLE
+          - INTERNAL_ERROR
+        examples:
+          - NOT_FOUND
+      message:
+        type: string
+        description: Pesan error yang bisa dibaca manusia.
+        examples:
+          - User not found
+      details:
+        type: array
+        description: Rincian per-field bila error berkaitan dengan validasi input.
+        items:
+          $ref: './ErrorDetail.yaml'
+    additionalProperties: false
+additionalProperties: false
+examples:
+  - error:
+      code: NOT_FOUND
+      message: User not found
+      details:
+        - field: uuid
+          issue: not found

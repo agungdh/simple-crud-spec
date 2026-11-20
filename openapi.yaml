@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Simple CRUD API
+  version: 1.0.0
+  description: |
+    Kontrak API untuk layanan CRUD sederhana. Spesifikasi ini adalah sumber
+    kebenaran; implementasi mengikuti spec, bukan sebaliknya.
+  contact:
+    name: API Team
+    email: api@example.com
+  license:
+    name: MIT
+    identifier: MIT
+servers:
+  - url: https://api.simplecrud.io
+    description: Production
+  - url: /
+    description: Same host as the docs (local development)
+tags:
+  - name: Users
+    description: Operasi CRUD untuk resource user.
+security:
+  - BearerAuth: []
+paths:
+  /api/users:
+    $ref: './paths/users.yaml'
+  /api/users/{uuid}:
+    $ref: './paths/users-by-id.yaml'
+components:
+  securitySchemes:
+    BearerAuth:
+      $ref: './components/securitySchemes/BearerAuth.yaml'
+  schemas:
+    User:
+      $ref: './components/schemas/User.yaml'
+    CreateUserRequest:
+      $ref: './components/schemas/CreateUserRequest.yaml'
+    UpdateUserRequest:
+      $ref: './components/schemas/UpdateUserRequest.yaml'
+    UserList:
+      $ref: './components/schemas/UserList.yaml'
+    ErrorDetail:
+      $ref: './components/schemas/ErrorDetail.yaml'
+    Error:
+      $ref: './components/schemas/Error.yaml'
+  parameters:
+    Limit:
+      $ref: './components/parameters/Limit.yaml'
+    After:
+      $ref: './components/parameters/After.yaml'
+    Sort:
+      $ref: './components/parameters/Sort.yaml'
+    Order:
+      $ref: './components/parameters/Order.yaml'
+    Search:
+      $ref: './components/parameters/Search.yaml'
+    Uuid:
+      $ref: './components/parameters/Uuid.yaml'
+  responses:
+    BadRequest:
+      $ref: './components/responses/BadRequest.yaml'
+    NotFound:
+      $ref: './components/responses/NotFound.yaml'
+    Conflict:
+      $ref: './components/responses/Conflict.yaml'
+    InternalError:
+      $ref: './components/responses/InternalError.yaml'
+    Unauthorized:
+      $ref: './components/responses/Unauthorized.yaml'

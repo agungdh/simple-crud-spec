@@ -1,0 +1,17 @@
+name: search
+in: query
+required: false
+description: |
+  Kata kunci pencarian yang dicocokkan sebagai substring (trigram) terhadap
+  gabungan seluruh field teks user (`username`, `name`). Kosongkan untuk
+  mengambil semua data tanpa filter. Pencocokan tidak membedakan huruf besar/kecil.
+schema:
+  type: string
+  minLength: 1
+  maxLength: 100
+style: form
+explode: true
+examples:
+  byName:
+    summary: Cari kata "santoso"
+    value: santoso

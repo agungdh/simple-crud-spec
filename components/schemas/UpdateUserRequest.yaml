@@ -1,0 +1,43 @@
+type: object
+description: |
+  Payload full replacement untuk memperbarui user. Client wajib mengirim seluruh
+  field mutable; field yang tidak dikirim dianggap dihapus/di-reset. Password tetap
+  wajib karena payload menggambarkan state lengkap resource.
+required:
+  - username
+  - name
+  - password
+properties:
+  username:
+    type: string
+    minLength: 3
+    maxLength: 32
+    pattern: '^[a-zA-Z0-9._-]+$'
+    description: |
+      Username unik yang dipakai untuk login. Hanya boleh berisi huruf, angka,
+      titik, underscore, dan tanda hubung.
+    examples:
+      - budi.santoso
+  name:
+    type: string
+    minLength: 1
+    maxLength: 100
+    description: Nama lengkap user.
+    examples:
+      - Budi S.
+  password:
+    type: string
+    format: password
+    minLength: 8
+    maxLength: 128
+    writeOnly: true
+    description: |
+      Password plaintext. Hanya diterima pada request write dan tidak pernah
+      dikembalikan pada response.
+    examples:
+      - N3wS3cret!
+additionalProperties: false
+examples:
+  - username: budi.santoso
+    name: Budi S.
+    password: N3wS3cret!

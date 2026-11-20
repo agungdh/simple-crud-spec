@@ -1,0 +1,15 @@
+description: Request tidak valid.
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/Error.yaml'
+    examples:
+      validation:
+        summary: Field wajib kosong
+        value:
+          error:
+            code: VALIDATION_ERROR
+            message: Request validation failed
+            details:
+              - field: username
+                issue: is required

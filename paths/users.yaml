@@ -1,0 +1,79 @@
+get:
+  summary: List users
+  description: |
+    Mengembalikan daftar user dengan cursor pagination berbasis `after`, plus
+    pencarian trigram dan sorting. Response tidak memuat password.
+  operationId: listUsers
+  tags:
+    - Users
+  parameters:
+    - $ref: '../components/parameters/Limit.yaml'
+    - $ref: '../components/parameters/After.yaml'
+    - $ref: '../components/parameters/Sort.yaml'
+    - $ref: '../components/parameters/Order.yaml'
+    - $ref: '../components/parameters/Search.yaml'
+  responses:
+    '200':
+      description: Daftar user berhasil diambil.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/UserList.yaml'
+          examples:
+            page:
+              summary: Satu halaman user
+              value:
+                data:
+                  - uuid: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
+                    username: budi.santoso
+                    name: Budi Santoso
+                nextAfter: null
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalError.yaml'
+post:
+  summary: Create user
+  description: |
+    Membuat user baru. Payload write wajib memuat `password`; password tersebut
+    tidak akan pernah dikembalikan pada response.
+  operationId: createUser
+  tags:
+    - Users
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/CreateUserRequest.yaml'
+        examples:
+          create:
+            summary: Buat user baru
+            value:
+              username: budi.santoso
+              name: Budi Santoso
+              password: S3cretPass!
+  responses:
+    '201':
+      description: User berhasil dibuat.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/User.yaml'
+          examples:
+            created:
+              summary: User tanpa password dan kolom audit
+              value:
+                uuid: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
+                username: budi.santoso
+                name: Budi Santoso
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '409':
+      $ref: '../components/responses/Conflict.yaml'
+    '500':
+      $ref: '../components/responses/InternalError.yaml'
