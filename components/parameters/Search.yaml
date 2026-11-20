@@ -2,9 +2,9 @@ name: search
 in: query
 required: false
 description: |
-  Kata kunci pencarian full-text (FTS) yang dicocokkan ke seluruh field teks
-  user (`username`, `name`). Kosongkan untuk mengambil semua data tanpa filter.
-  Perilaku pencocokan (tokenisasi, stemming, ranking) ditentukan server.
+  Kata kunci pencarian yang dicocokkan sebagai substring (trigram) terhadap
+  gabungan seluruh field teks user (`username`, `name`). Kosongkan untuk
+  mengambil semua data tanpa filter. Pencocokan tidak membedakan huruf besar/kecil.
 schema:
   type: string
   minLength: 1

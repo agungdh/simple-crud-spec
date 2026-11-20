@@ -2,7 +2,7 @@ get:
   summary: List users
   description: |
     Mengembalikan daftar user dengan cursor pagination berbasis `after`, plus
-    pencarian full-text dan sorting. Response tidak memuat password.
+    pencarian trigram dan sorting. Response tidak memuat password.
   operationId: listUsers
   tags:
     - Users
