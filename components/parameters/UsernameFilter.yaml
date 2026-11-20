@@ -1,0 +1,12 @@
+name: username
+in: query
+required: false
+description: Filter berdasarkan username (pencocokan substring, case-insensitive).
+schema:
+  type: string
+style: form
+explode: true
+examples:
+  containsBudi:
+    summary: Username mengandung "budi"
+    value: budi

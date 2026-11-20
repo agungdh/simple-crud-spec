@@ -1,0 +1,19 @@
+name: sort
+in: query
+required: false
+description: |
+  Field yang dipakai sebagai kunci pengurutan. Nilai default dan tie-breaker
+  ditentukan server; kontrak ini tidak menjamin urutan tertentu bila parameter
+  tidak dikirim.
+schema:
+  type: string
+  enum:
+    - CREATED_AT
+    - UPDATED_AT
+    - USERNAME
+style: form
+explode: true
+examples:
+  byCreatedAt:
+    summary: Urutkan berdasarkan waktu dibuat
+    value: CREATED_AT

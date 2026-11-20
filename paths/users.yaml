@@ -1,22 +1,18 @@
 get:
   summary: List users
   description: |
-    Mengembalikan daftar user dengan pagination berbasis cursor. Response tidak
-    memuat password.
+    Mengembalikan daftar user dengan cursor pagination berbasis `after`, plus
+    filter dan sorting. Response tidak memuat password.
   operationId: listUsers
   tags:
     - Users
   parameters:
     - $ref: '../components/parameters/Limit.yaml'
-    - $ref: '../components/parameters/Cursor.yaml'
-    - name: username
-      in: query
-      required: false
-      description: Filter berdasarkan username (exact match).
-      schema:
-        type: string
-      style: form
-      explode: true
+    - $ref: '../components/parameters/After.yaml'
+    - $ref: '../components/parameters/Sort.yaml'
+    - $ref: '../components/parameters/Order.yaml'
+    - $ref: '../components/parameters/UsernameFilter.yaml'
+    - $ref: '../components/parameters/NameFilter.yaml'
   responses:
     '200':
       description: Daftar user berhasil diambil.
@@ -34,7 +30,7 @@ get:
                     name: Budi Santoso
                     createdAt: '2026-01-15T08:30:00Z'
                     updatedAt: '2026-01-20T10:00:00Z'
-                nextCursor: null
+                nextAfter: null
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':

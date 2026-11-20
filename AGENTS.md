@@ -72,9 +72,12 @@ Semua error memakai envelope yang sama:
 
 ## Konvensi list & pagination
 
-- Query: `limit` (1–100, default 20) + `cursor` (opaque string).
-- Response: `{ "data": [...], "nextCursor": "..." | null }`.
-- Filter dan sorting didokumentasikan sebagai `parameters` dengan `style: form`.
+- Cursor pagination berbasis ID: query `after` (UUID item terakhir halaman sebelumnya).
+- Query: `limit` (1–100, default 20) + `after` (UUID, opsional).
+- Response: `{ "data": [...], "nextAfter": "<uuid>" | null }`.
+- Sorting lewat query `sort` + `order`. Nilai default (field dan arah) ditentukan
+  server; spec hanya mendokumentasikan nilai yang didukung.
+- Filter didokumentasikan sebagai `parameters` (per field) dengan `style: form`.
 
 ## Validasi
 

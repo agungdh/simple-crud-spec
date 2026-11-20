@@ -1,0 +1,12 @@
+name: name
+in: query
+required: false
+description: Filter berdasarkan nama user (pencocokan substring, case-insensitive).
+schema:
+  type: string
+style: form
+explode: true
+examples:
+  containsSantoso:
+    summary: Nama mengandung "Santoso"
+    value: Santoso

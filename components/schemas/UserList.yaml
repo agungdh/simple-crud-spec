@@ -1,23 +1,24 @@
 type: object
-description: Halaman hasil list user dengan pagination cursor.
+description: Halaman hasil list user dengan pagination berbasis `after`.
 required:
   - data
-  - nextCursor
+  - nextAfter
 properties:
   data:
     type: array
     description: Daftar user pada halaman ini.
     items:
       $ref: './User.yaml'
-  nextCursor:
+  nextAfter:
     type:
       - string
       - 'null'
+    format: uuid
     description: |
-      Cursor opaque untuk halaman berikutnya, atau `null` bila sudah tidak ada
-      halaman lagi. Jangan mengurai isinya; teruskan apa adanya ke query `cursor`.
+      UUID item terakhir pada halaman ini, untuk dikirim sebagai query `after`
+      pada request berikutnya. Bernilai `null` bila tidak ada halaman lagi.
     examples:
-      - eyJpZCI6IjhmMTRlNDVmIn0
+      - 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
       - null
 additionalProperties: false
 examples:
@@ -27,4 +28,4 @@ examples:
         name: Budi Santoso
         createdAt: '2026-01-15T08:30:00Z'
         updatedAt: '2026-01-20T10:00:00Z'
-    nextCursor: null
+    nextAfter: null

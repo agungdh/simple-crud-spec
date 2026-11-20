@@ -1,0 +1,16 @@
+name: after
+in: query
+required: false
+description: |
+  Cursor pagination. Isi dengan `id` (UUID) item terakhir pada halaman
+  sebelumnya; server mengembalikan item setelah ID tersebut. Kosongkan untuk
+  mengambil halaman pertama.
+schema:
+  type: string
+  format: uuid
+style: form
+explode: true
+examples:
+  afterUser:
+    summary: Lanjut setelah user ini
+    value: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f

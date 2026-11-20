@@ -52,8 +52,16 @@ components:
   parameters:
     Limit:
       $ref: './components/parameters/Limit.yaml'
-    Cursor:
-      $ref: './components/parameters/Cursor.yaml'
+    After:
+      $ref: './components/parameters/After.yaml'
+    Sort:
+      $ref: './components/parameters/Sort.yaml'
+    Order:
+      $ref: './components/parameters/Order.yaml'
+    UsernameFilter:
+      $ref: './components/parameters/UsernameFilter.yaml'
+    NameFilter:
+      $ref: './components/parameters/NameFilter.yaml'
     UserId:
       $ref: './components/parameters/UserId.yaml'
   responses:
