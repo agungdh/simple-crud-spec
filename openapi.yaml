@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: Simple CRUD API
+  version: 1.0.0
+  description: |
+    Kontrak API untuk layanan CRUD sederhana. Spesifikasi ini adalah sumber
+    kebenaran; implementasi mengikuti spec, bukan sebaliknya.
+  contact:
+    name: API Team
+    email: api@example.com
+  license:
+    name: MIT
+    identifier: MIT
+servers:
+  - url: https://api.simplecrud.io
+    description: Production
+  - url: /
+    description: Same host as the docs (local development)
+tags:
+  - name: Users
+    description: Operasi CRUD untuk resource user.
+paths: {}

@@ -1,0 +1,22 @@
+{
+  "name": "simple-crud-spec",
+  "version": "1.0.0",
+  "description": "OpenAPI spec untuk layanan CRUD sederhana + Swagger UI lokal",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "lint": "redocly lint openapi.yaml",
+    "bundle": "redocly bundle openapi.yaml -o dist/openapi.yaml"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "@hono/node-server": "^2.1.11",
+    "hono": "^4.13.19",
+    "swagger-ui-dist": "^5.35.1"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^2.82.0"
+  }
+}
