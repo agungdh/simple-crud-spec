@@ -34,6 +34,18 @@ spec di satu file raksasa.
 - Tanggal saja → `format: date`; waktu → `format: date-time` (RFC 3339, UTC).
 - ID di path → `type: string`, `format: uuid` (kecuali diputuskan lain dan dicatat di sini).
 
+## Konvensi update
+
+- Update memakai **`PUT` dengan semantik full replacement**: client wajib mengirim
+  seluruh field mutable, dan field yang tidak dikirim dianggap dihapus / di-reset.
+- **Tidak ada `PATCH`** dan tidak ada partial update di kontrak ini. Update parsial
+  harus dilakukan client dengan GET lalu PUT payload lengkap.
+- Karena full replacement, seluruh field pada `*UpdateRequest` bersifat `required`
+  (bukan opsional) dan `minProperties` tidak dipakai.
+- Field `writeOnly` (mis. `password`) tetap wajib di payload update, karena full
+  replacement menggambarkan state lengkap resource yang diinginkan.
+- Response update: `200` dengan representasi resource setelah diubah.
+
 ## Konvensi error
 
 Semua error memakai envelope yang sama:
@@ -80,8 +92,9 @@ Jangan menonaktifkan rule global hanya untuk meloloskan satu file.
 
 - Branch: `main` (stabil), kerja di `feat/<topik>` atau `fix/<topik>`.
 - Commit kecil dan fokus; pesan: `spec(users): tambah endpoint update`.
-- Perubahan yang **breaking** (rename field, hapus endpoint, ubah tipe) wajib ditandai
-  di deskripsi commit/PR dan disertai catatan migrasi.
+- Spec ini masih **draft versi awal** dan belum dipublikasikan ke consumer mana pun.
+  Perubahan yang mengubah kontrak (rename field, hapus endpoint, ubah tipe) **tidak**
+  perlu ditandai `!` atau breaking-change note; cukup jelaskan singkat di commit.
 
 ## Larangan
 

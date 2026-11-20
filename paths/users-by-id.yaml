@@ -31,9 +31,9 @@ get:
 put:
   summary: Update user
   description: |
-    Memperbarui user secara partial; hanya field yang dikirim yang diubah.
-    `password` boleh dikirim untuk mengganti password, tetapi tidak pernah
-    muncul di response.
+    Mengganti seluruh state user (full replacement). Client wajib mengirim
+    `username`, `name`, dan `password`; semua field pada payload bersifat wajib.
+    `password` tidak pernah muncul di response.
   operationId: updateUser
   tags:
     - Users
@@ -46,13 +46,11 @@ put:
         schema:
           $ref: '../components/schemas/UpdateUserRequest.yaml'
         examples:
-          updateName:
-            summary: Ubah nama saja
+          replaceAll:
+            summary: Ganti seluruh state user
             value:
+              username: budi.santoso
               name: Budi S.
-          updatePassword:
-            summary: Ganti password
-            value:
               password: N3wS3cret!
   responses:
     '200':
