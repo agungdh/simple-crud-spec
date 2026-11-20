@@ -24,7 +24,8 @@ spec di satu file raksasa.
 - Versi: **OpenAPI 3.1.0** (JSON Schema 2020-12).
 - YAML, indentasi 2 spasi, tanpa tab. Urutan kunci per operasi:
   `summary` → `description` → `operationId` → `tags` → `parameters` → `requestBody` → `responses`.
-- Path: plural, kebab-case, dengan prefix versi: `/v1/users`, `/v1/order-items`.
+- Path: plural, kebab-case, dengan prefix `/api`: `/api/users`, `/api/order-items`.
+  Tanpa versioning di path.
 - `operationId`: camelCase, pola `verbResource` — `listUsers`, `getUser`, `createUser`,
   `updateUser`, `deleteUser`.
 - Field JSON: `camelCase`. Nilai enum: `SCREAMING_SNAKE_CASE`.

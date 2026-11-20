@@ -22,9 +22,9 @@ tags:
 security:
   - BearerAuth: []
 paths:
-  /v1/users:
+  /api/users:
     $ref: './paths/users.yaml'
-  /v1/users/{uuid}:
+  /api/users/{uuid}:
     $ref: './paths/users-by-id.yaml'
 components:
   securitySchemes:

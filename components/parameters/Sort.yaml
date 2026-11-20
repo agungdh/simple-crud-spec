@@ -2,18 +2,18 @@ name: sort
 in: query
 required: false
 description: |
-  Field yang dipakai sebagai kunci pengurutan. Nilai default dan tie-breaker
+  Field yang dipakai sebagai kunci pengurutan. Hanya field DTO yang boleh dipakai;
+  kolom audit tidak pernah menjadi kunci sort. Nilai default dan tie-breaker
   ditentukan server; kontrak ini tidak menjamin urutan tertentu bila parameter
   tidak dikirim.
 schema:
   type: string
   enum:
-    - CREATED_AT
-    - UPDATED_AT
     - USERNAME
+    - NAME
 style: form
 explode: true
 examples:
-  byCreatedAt:
-    summary: Urutkan berdasarkan waktu dibuat
-    value: CREATED_AT
+  byUsername:
+    summary: Urutkan berdasarkan username
+    value: USERNAME
