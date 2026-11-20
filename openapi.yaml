@@ -31,12 +31,6 @@ components:
     BearerAuth:
       $ref: './components/securitySchemes/BearerAuth.yaml'
   schemas:
-    Username:
-      $ref: './components/schemas/Username.yaml'
-    Name:
-      $ref: './components/schemas/Name.yaml'
-    Password:
-      $ref: './components/schemas/Password.yaml'
     User:
       $ref: './components/schemas/User.yaml'
     CreateUserRequest:

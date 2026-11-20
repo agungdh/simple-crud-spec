@@ -15,9 +15,22 @@ properties:
     examples:
       - 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
   username:
-    $ref: './Username.yaml'
+    type: string
+    minLength: 3
+    maxLength: 32
+    pattern: '^[a-zA-Z0-9._-]+$'
+    description: |
+      Username unik yang dipakai untuk login. Hanya boleh berisi huruf, angka,
+      titik, underscore, dan tanda hubung.
+    examples:
+      - budi.santoso
   name:
-    $ref: './Name.yaml'
+    type: string
+    minLength: 1
+    maxLength: 100
+    description: Nama lengkap user.
+    examples:
+      - Budi Santoso
 additionalProperties: false
 examples:
   - uuid: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f

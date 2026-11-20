@@ -6,11 +6,33 @@ required:
   - password
 properties:
   username:
-    $ref: './Username.yaml'
+    type: string
+    minLength: 3
+    maxLength: 32
+    pattern: '^[a-zA-Z0-9._-]+$'
+    description: |
+      Username unik yang dipakai untuk login. Hanya boleh berisi huruf, angka,
+      titik, underscore, dan tanda hubung.
+    examples:
+      - budi.santoso
   name:
-    $ref: './Name.yaml'
+    type: string
+    minLength: 1
+    maxLength: 100
+    description: Nama lengkap user.
+    examples:
+      - Budi Santoso
   password:
-    $ref: './Password.yaml'
+    type: string
+    format: password
+    minLength: 8
+    maxLength: 128
+    writeOnly: true
+    description: |
+      Password plaintext. Hanya diterima pada request write dan tidak pernah
+      dikembalikan pada response.
+    examples:
+      - S3cretPass!
 additionalProperties: false
 examples:
   - username: budi.santoso
