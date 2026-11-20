@@ -2,9 +2,9 @@ name: after
 in: query
 required: false
 description: |
-  Cursor pagination. Isi dengan `id` (UUID) item terakhir pada halaman
-  sebelumnya; server mengembalikan item setelah ID tersebut. Kosongkan untuk
-  mengambil halaman pertama.
+  Cursor pagination. Isi dengan `uuid` item terakhir pada halaman sebelumnya;
+  server mengembalikan item setelah UUID tersebut. Kosongkan untuk mengambil
+  halaman pertama.
 schema:
   type: string
   format: uuid

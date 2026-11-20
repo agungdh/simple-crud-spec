@@ -23,9 +23,7 @@ properties:
 additionalProperties: false
 examples:
   - data:
-      - id: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
+      - uuid: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
         username: budi.santoso
         name: Budi Santoso
-        createdAt: '2026-01-15T08:30:00Z'
-        updatedAt: '2026-01-20T10:00:00Z'
     nextAfter: null

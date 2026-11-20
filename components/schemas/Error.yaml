@@ -40,5 +40,5 @@ examples:
       code: NOT_FOUND
       message: User not found
       details:
-        - field: id
+        - field: uuid
           issue: not found

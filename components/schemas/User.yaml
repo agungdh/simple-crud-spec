@@ -1,40 +1,25 @@
 type: object
 description: |
-  Representasi user yang dikembalikan API. Password tidak pernah disertakan
-  pada response; field ini hanya ada di schema request.
+  Representasi user yang dikembalikan API. Password dan kolom audit
+  (`createdAt`, `updatedAt`, `createdBy`, `updatedBy`, `deletedAt`, `version`)
+  tidak pernah disertakan pada response.
 required:
-  - id
+  - uuid
   - username
   - name
-  - createdAt
-  - updatedAt
 properties:
-  id:
+  uuid:
     type: string
     format: uuid
-    description: ID unik user.
+    description: UUID unik user.
     examples:
       - 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
   username:
     $ref: './Username.yaml'
   name:
     $ref: './Name.yaml'
-  createdAt:
-    type: string
-    format: date-time
-    description: Waktu user dibuat (RFC 3339, UTC).
-    examples:
-      - '2026-01-15T08:30:00Z'
-  updatedAt:
-    type: string
-    format: date-time
-    description: Waktu user terakhir diperbarui (RFC 3339, UTC).
-    examples:
-      - '2026-01-20T10:00:00Z'
 additionalProperties: false
 examples:
-  - id: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
+  - uuid: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
     username: budi.santoso
     name: Budi Santoso
-    createdAt: '2026-01-15T08:30:00Z'
-    updatedAt: '2026-01-20T10:00:00Z'

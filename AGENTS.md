@@ -32,7 +32,18 @@ spec di satu file raksasa.
   satu response 4xx, dan schema request/response yang di-`$ref` (tidak inline).
 - Semua schema wajib punya `description` dan `examples`. Field `required` harus eksplisit.
 - Tanggal saja → `format: date`; waktu → `format: date-time` (RFC 3339, UTC).
-- ID di path → `type: string`, `format: uuid` (kecuali diputuskan lain dan dicatat di sini).
+- Primary key di DTO bernama **`uuid`** (`type: string`, `format: uuid`), bukan `id`.
+  Path parameter ikut bernama `{uuid}`.
+
+## Kolom rahasia & audit
+
+- **Kolom audit tidak boleh masuk DTO**, baik request maupun response:
+  `createdAt`, `updatedAt`, `createdBy`, `updatedBy`, `deletedAt`, `version`.
+  Semua itu urusan internal persistensi; DTO hanya memuat field yang relevan
+  bagi consumer API.
+- Field rahasia seperti `password`, `passwordHash`, `salt`, `token` **tidak pernah**
+  muncul di response. Pada request write, `password` dikirim plaintext dengan
+  `writeOnly: true`.
 
 ## Konvensi update
 
