@@ -19,4 +19,51 @@ servers:
 tags:
   - name: Users
     description: Operasi CRUD untuk resource user.
-paths: {}
+security:
+  - BearerAuth: []
+paths:
+  /v1/users:
+    $ref: './paths/users.yaml'
+  /v1/users/{userId}:
+    $ref: './paths/users-by-id.yaml'
+components:
+  securitySchemes:
+    BearerAuth:
+      $ref: './components/securitySchemes/BearerAuth.yaml'
+  schemas:
+    Username:
+      $ref: './components/schemas/Username.yaml'
+    Name:
+      $ref: './components/schemas/Name.yaml'
+    Password:
+      $ref: './components/schemas/Password.yaml'
+    User:
+      $ref: './components/schemas/User.yaml'
+    CreateUserRequest:
+      $ref: './components/schemas/CreateUserRequest.yaml'
+    UpdateUserRequest:
+      $ref: './components/schemas/UpdateUserRequest.yaml'
+    UserList:
+      $ref: './components/schemas/UserList.yaml'
+    ErrorDetail:
+      $ref: './components/schemas/ErrorDetail.yaml'
+    Error:
+      $ref: './components/schemas/Error.yaml'
+  parameters:
+    Limit:
+      $ref: './components/parameters/Limit.yaml'
+    Cursor:
+      $ref: './components/parameters/Cursor.yaml'
+    UserId:
+      $ref: './components/parameters/UserId.yaml'
+  responses:
+    BadRequest:
+      $ref: './components/responses/BadRequest.yaml'
+    NotFound:
+      $ref: './components/responses/NotFound.yaml'
+    Conflict:
+      $ref: './components/responses/Conflict.yaml'
+    InternalError:
+      $ref: './components/responses/InternalError.yaml'
+    Unauthorized:
+      $ref: './components/responses/Unauthorized.yaml'

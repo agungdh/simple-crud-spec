@@ -1,0 +1,6 @@
+type: string
+minLength: 1
+maxLength: 100
+description: Nama lengkap user.
+examples:
+  - Budi Santoso

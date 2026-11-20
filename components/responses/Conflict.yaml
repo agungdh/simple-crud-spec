@@ -1,0 +1,15 @@
+description: Terjadi konflik dengan data yang sudah ada.
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/Error.yaml'
+    examples:
+      usernameTaken:
+        summary: Username sudah dipakai
+        value:
+          error:
+            code: CONFLICT
+            message: Username already taken
+            details:
+              - field: username
+                issue: already taken

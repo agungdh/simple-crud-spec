@@ -1,0 +1,30 @@
+type: object
+description: Halaman hasil list user dengan pagination cursor.
+required:
+  - data
+  - nextCursor
+properties:
+  data:
+    type: array
+    description: Daftar user pada halaman ini.
+    items:
+      $ref: './User.yaml'
+  nextCursor:
+    type:
+      - string
+      - 'null'
+    description: |
+      Cursor opaque untuk halaman berikutnya, atau `null` bila sudah tidak ada
+      halaman lagi. Jangan mengurai isinya; teruskan apa adanya ke query `cursor`.
+    examples:
+      - eyJpZCI6IjhmMTRlNDVmIn0
+      - null
+additionalProperties: false
+examples:
+  - data:
+      - id: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
+        username: budi.santoso
+        name: Budi Santoso
+        createdAt: '2026-01-15T08:30:00Z'
+        updatedAt: '2026-01-20T10:00:00Z'
+    nextCursor: null

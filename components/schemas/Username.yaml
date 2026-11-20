@@ -1,0 +1,9 @@
+type: string
+minLength: 3
+maxLength: 32
+pattern: '^[a-zA-Z0-9._-]+$'
+description: |
+  Username unik yang dipakai untuk login. Hanya boleh berisi huruf, angka,
+  titik, underscore, dan tanda hubung.
+examples:
+  - budi.santoso

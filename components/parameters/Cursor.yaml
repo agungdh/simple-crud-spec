@@ -1,0 +1,14 @@
+name: cursor
+in: query
+required: false
+description: |
+  Cursor opaque dari field `nextCursor` response sebelumnya. Jangan mengurai
+  atau membangun sendiri nilainya.
+schema:
+  type: string
+style: form
+explode: true
+examples:
+  eyJpZCI6IjhmMTRlNDVmIn0:
+    summary: Contoh cursor
+    value: eyJpZCI6IjhmMTRlNDVmIn0

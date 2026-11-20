@@ -1,0 +1,99 @@
+get:
+  summary: Get user
+  description: Mengambil satu user berdasarkan ID. Response tidak memuat password.
+  operationId: getUser
+  tags:
+    - Users
+  parameters:
+    - $ref: '../components/parameters/UserId.yaml'
+  responses:
+    '200':
+      description: User ditemukan.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/User.yaml'
+          examples:
+            found:
+              summary: User tanpa password
+              value:
+                id: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
+                username: budi.santoso
+                name: Budi Santoso
+                createdAt: '2026-01-15T08:30:00Z'
+                updatedAt: '2026-01-20T10:00:00Z'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '500':
+      $ref: '../components/responses/InternalError.yaml'
+put:
+  summary: Update user
+  description: |
+    Memperbarui user secara partial; hanya field yang dikirim yang diubah.
+    `password` boleh dikirim untuk mengganti password, tetapi tidak pernah
+    muncul di response.
+  operationId: updateUser
+  tags:
+    - Users
+  parameters:
+    - $ref: '../components/parameters/UserId.yaml'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/UpdateUserRequest.yaml'
+        examples:
+          updateName:
+            summary: Ubah nama saja
+            value:
+              name: Budi S.
+          updatePassword:
+            summary: Ganti password
+            value:
+              password: N3wS3cret!
+  responses:
+    '200':
+      description: User berhasil diperbarui.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/User.yaml'
+          examples:
+            updated:
+              summary: User setelah update, tanpa password
+              value:
+                id: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f
+                username: budi.santoso
+                name: Budi S.
+                createdAt: '2026-01-15T08:30:00Z'
+                updatedAt: '2026-01-20T10:00:00Z'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '409':
+      $ref: '../components/responses/Conflict.yaml'
+    '500':
+      $ref: '../components/responses/InternalError.yaml'
+delete:
+  summary: Delete user
+  description: Menghapus user berdasarkan ID.
+  operationId: deleteUser
+  tags:
+    - Users
+  parameters:
+    - $ref: '../components/parameters/UserId.yaml'
+  responses:
+    '204':
+      description: User berhasil dihapus; tidak ada body.
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '500':
+      $ref: '../components/responses/InternalError.yaml'

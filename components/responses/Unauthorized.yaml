@@ -1,0 +1,12 @@
+description: Token akses tidak ada atau tidak valid.
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/Error.yaml'
+    examples:
+      unauthorized:
+        summary: Token tidak dikirim
+        value:
+          error:
+            code: UNAUTHORIZED
+            message: Missing or invalid access token

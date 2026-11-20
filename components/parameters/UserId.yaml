@@ -1,0 +1,11 @@
+name: userId
+in: path
+required: true
+description: ID unik user.
+schema:
+  type: string
+  format: uuid
+examples:
+  user:
+    summary: Contoh ID user
+    value: 8f14e45f-ea9f-4b1c-9c3f-1a2b3c4d5e6f

@@ -1,0 +1,17 @@
+type: object
+description: |
+  Payload untuk memperbarui user. Semua field opsional (partial update);
+  kirim hanya field yang ingin diubah. Password ikut diterima di sini karena
+  ini operasi write.
+minProperties: 1
+properties:
+  username:
+    $ref: './Username.yaml'
+  name:
+    $ref: './Name.yaml'
+  password:
+    $ref: './Password.yaml'
+additionalProperties: false
+examples:
+  - name: Budi S.
+  - password: N3wS3cret!

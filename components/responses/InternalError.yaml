@@ -1,0 +1,12 @@
+description: Error internal server.
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/Error.yaml'
+    examples:
+      internal:
+        summary: Kesalahan tak terduga
+        value:
+          error:
+            code: INTERNAL_ERROR
+            message: Internal server error
