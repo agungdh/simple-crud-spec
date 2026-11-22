@@ -1,5 +1,0 @@
-type: http
-scheme: bearer
-bearerFormat: JWT
-description: |
-  Kirim token akses pada header `Authorization: Bearer <token>`.

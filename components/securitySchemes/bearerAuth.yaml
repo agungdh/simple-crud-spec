@@ -1,0 +1,4 @@
+type: http
+scheme: bearer
+bearerFormat: OpaqueToken
+description: 'Masukkan token pada header Authorization: Bearer <token>'

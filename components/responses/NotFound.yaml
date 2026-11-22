@@ -1,12 +1,9 @@
-description: User tidak ditemukan.
+description: Resource tidak ditemukan
 content:
   application/json:
     schema:
-      $ref: '../schemas/Error.yaml'
+      $ref: '../schemas/ErrorResponse.yaml'
     examples:
       notFound:
-        summary: ID tidak dikenal
         value:
-          error:
-            code: NOT_FOUND
-            message: User not found
+          message: 'Not Found'

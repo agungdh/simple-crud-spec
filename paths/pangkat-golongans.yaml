@@ -1,0 +1,52 @@
+get:
+  summary: List Pangkat Golongans
+  description: Mengambil daftar seluruh pangkat dan golongan.
+  operationId: listPangkatGolongans
+  tags:
+    - Pangkat Golongans
+  responses:
+    '200':
+      description: Daftar pangkat golongan berhasil diambil
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/PangkatGolonganResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+post:
+  summary: Create Pangkat Golongan
+  description: Menambahkan data pangkat golongan baru.
+  operationId: createPangkatGolongan
+  tags:
+    - Pangkat Golongans
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/PangkatGolonganRequest.yaml'
+  responses:
+    '201':
+      description: Pangkat golongan berhasil dibuat
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/PangkatGolonganResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '422':
+      $ref: '../components/responses/UnprocessableEntity.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

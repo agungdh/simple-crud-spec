@@ -1,0 +1,21 @@
+type: object
+description: Response ketika validasi input gagal (Unprocessable Entity).
+additionalProperties: false
+required:
+  - message
+  - errors
+properties:
+  message:
+    type: string
+    examples:
+      - 'Data yang diberikan tidak valid'
+  errors:
+    type: array
+    items:
+      $ref: './ValidationFieldError.yaml'
+examples:
+  - message: 'Data yang diberikan tidak valid'
+    errors:
+      - field: 'bidangUuid'
+        messages:
+          - 'Bidang wajib diisi'

@@ -1,0 +1,38 @@
+type: object
+description: Payload untuk membuat atau memperbarui pangkat dan golongan.
+additionalProperties: false
+required:
+  - jenjang
+  - pangkat
+  - golongan
+  - ruang
+properties:
+  jenjang:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'Penata'
+  pangkat:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'Penata Muda Tingkat I'
+  golongan:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'III'
+  ruang:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'b'
+examples:
+  - jenjang: 'Penata'
+    pangkat: 'Penata Muda Tingkat I'
+    golongan: 'III'
+    ruang: 'b'

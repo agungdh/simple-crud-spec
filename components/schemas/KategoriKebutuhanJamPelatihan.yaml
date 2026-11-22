@@ -1,0 +1,8 @@
+type: string
+description: Kategori kebutuhan jam pelatihan untuk pegawai.
+enum:
+  - admin
+  - pejabat
+  - auditor
+examples:
+  - 'auditor'

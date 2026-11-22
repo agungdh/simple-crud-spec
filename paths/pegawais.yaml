@@ -1,0 +1,54 @@
+get:
+  summary: List Pegawais
+  description: Mengambil daftar seluruh pegawai beserta informasi akun user (1-to-1).
+  operationId: listPegawais
+  tags:
+    - Pegawais
+  responses:
+    '200':
+      description: Daftar pegawai berhasil diambil
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/PegawaiResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+post:
+  summary: Create Pegawai & User Account
+  description: >-
+    Membuat data pegawai baru sekaligus membuat akun user (username dan password)
+    secara atomik dalam relasi 1-to-1.
+  operationId: createPegawai
+  tags:
+    - Pegawais
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/CreatePegawaiRequest.yaml'
+  responses:
+    '201':
+      description: Pegawai dan akun user berhasil dibuat
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/PegawaiResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '422':
+      $ref: '../components/responses/UnprocessableEntity.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

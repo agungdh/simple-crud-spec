@@ -1,10 +1,11 @@
 openapi: 3.1.0
 info:
-  title: Simple CRUD API
+  title: SIMON-JP Core API
   version: 1.0.0
-  description: |
-    Kontrak API untuk layanan CRUD sederhana. Spesifikasi ini adalah sumber
-    kebenaran; implementasi mengikuti spec, bukan sebaliknya.
+  summary: Hybrid Authentication & Master Data API
+  description: >-
+    API autentikasi (Bearer Token & HttpOnly Cookie dengan sliding session)
+    serta manajemen master data Bidang, Pangkat Golongan, dan Pegawai.
   contact:
     name: API Team
     email: api@example.com
@@ -12,58 +13,96 @@ info:
     name: MIT
     identifier: MIT
 servers:
-  - url: https://api.simplecrud.io
-    description: Production
-  - url: /
-    description: Same host as the docs (local development)
+  # URL server mengarah ke service lokal backend SIMON-JP pada masa pengembangan (menghasilkan warning no-server-example-com yang diizinkan)
+  - url: http://localhost:8080/api
+    description: Local Development Server
 tags:
-  - name: Users
-    description: Operasi CRUD untuk resource user.
+  - name: Auth
+    description: Manajemen autentikasi dan sesi pengguna
+  - name: Bidangs
+    description: Manajemen master data bidang
+  - name: Pangkat Golongans
+    description: Manajemen master data pangkat dan golongan
+  - name: Pegawais
+    description: Manajemen data pegawai dan akun pengguna (relasi 1-to-1)
 security:
-  - BearerAuth: []
+  - bearerAuth: []
+  - cookieAuth: []
 paths:
-  /api/users:
-    $ref: './paths/users.yaml'
-  /api/users/{uuid}:
-    $ref: './paths/users-by-id.yaml'
+  /login:
+    $ref: './paths/login.yaml'
+  /logout:
+    $ref: './paths/logout.yaml'
+  /me:
+    $ref: './paths/me.yaml'
+  /bidangs:
+    $ref: './paths/bidangs.yaml'
+  /bidangs/{uuid}:
+    $ref: './paths/bidangs-by-id.yaml'
+  /pangkat-golongans:
+    $ref: './paths/pangkat-golongans.yaml'
+  /pangkat-golongans/{uuid}:
+    $ref: './paths/pangkat-golongans-by-id.yaml'
+  /pegawais:
+    $ref: './paths/pegawais.yaml'
+  /pegawais/{uuid}:
+    $ref: './paths/pegawais-by-id.yaml'
 components:
   securitySchemes:
-    BearerAuth:
-      $ref: './components/securitySchemes/BearerAuth.yaml'
-  schemas:
-    User:
-      $ref: './components/schemas/User.yaml'
-    CreateUserRequest:
-      $ref: './components/schemas/CreateUserRequest.yaml'
-    UpdateUserRequest:
-      $ref: './components/schemas/UpdateUserRequest.yaml'
-    UserList:
-      $ref: './components/schemas/UserList.yaml'
-    ErrorDetail:
-      $ref: './components/schemas/ErrorDetail.yaml'
-    Error:
-      $ref: './components/schemas/Error.yaml'
+    bearerAuth:
+      $ref: './components/securitySchemes/bearerAuth.yaml'
+    cookieAuth:
+      $ref: './components/securitySchemes/cookieAuth.yaml'
   parameters:
-    Limit:
-      $ref: './components/parameters/Limit.yaml'
-    After:
-      $ref: './components/parameters/After.yaml'
-    Sort:
-      $ref: './components/parameters/Sort.yaml'
-    Order:
-      $ref: './components/parameters/Order.yaml'
-    Search:
-      $ref: './components/parameters/Search.yaml'
-    Uuid:
-      $ref: './components/parameters/Uuid.yaml'
+    BidangUuid:
+      $ref: './components/parameters/BidangUuid.yaml'
+    PangkatGolonganUuid:
+      $ref: './components/parameters/PangkatGolonganUuid.yaml'
+    PegawaiUuid:
+      $ref: './components/parameters/PegawaiUuid.yaml'
   responses:
     BadRequest:
       $ref: './components/responses/BadRequest.yaml'
-    NotFound:
-      $ref: './components/responses/NotFound.yaml'
-    Conflict:
-      $ref: './components/responses/Conflict.yaml'
-    InternalError:
-      $ref: './components/responses/InternalError.yaml'
     Unauthorized:
       $ref: './components/responses/Unauthorized.yaml'
+    Forbidden:
+      $ref: './components/responses/Forbidden.yaml'
+    NotFound:
+      $ref: './components/responses/NotFound.yaml'
+    UnprocessableEntity:
+      $ref: './components/responses/UnprocessableEntity.yaml'
+    ServerError:
+      $ref: './components/responses/ServerError.yaml'
+  schemas:
+    LoginRequest:
+      $ref: './components/schemas/LoginRequest.yaml'
+    LoginResponse:
+      $ref: './components/schemas/LoginResponse.yaml'
+    BidangRequest:
+      $ref: './components/schemas/BidangRequest.yaml'
+    BidangResponse:
+      $ref: './components/schemas/BidangResponse.yaml'
+    PangkatGolonganRequest:
+      $ref: './components/schemas/PangkatGolonganRequest.yaml'
+    PangkatGolonganResponse:
+      $ref: './components/schemas/PangkatGolonganResponse.yaml'
+    PegawaiTipe:
+      $ref: './components/schemas/PegawaiTipe.yaml'
+    PegawaiStatus:
+      $ref: './components/schemas/PegawaiStatus.yaml'
+    KategoriJabatan:
+      $ref: './components/schemas/KategoriJabatan.yaml'
+    KategoriKebutuhanJamPelatihan:
+      $ref: './components/schemas/KategoriKebutuhanJamPelatihan.yaml'
+    CreatePegawaiRequest:
+      $ref: './components/schemas/CreatePegawaiRequest.yaml'
+    UpdatePegawaiRequest:
+      $ref: './components/schemas/UpdatePegawaiRequest.yaml'
+    PegawaiResponse:
+      $ref: './components/schemas/PegawaiResponse.yaml'
+    ErrorResponse:
+      $ref: './components/schemas/ErrorResponse.yaml'
+    ValidationFieldError:
+      $ref: './components/schemas/ValidationFieldError.yaml'
+    ValidationErrorResponse:
+      $ref: './components/schemas/ValidationErrorResponse.yaml'

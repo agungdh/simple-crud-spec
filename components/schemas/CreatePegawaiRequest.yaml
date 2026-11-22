@@ -1,0 +1,98 @@
+type: object
+description: Payload untuk membuat pegawai baru beserta akun user relasi 1-to-1 secara atomik.
+additionalProperties: false
+required:
+  - username
+  - password
+  - bidangUuid
+  - pangkatGolonganUuid
+  - tipe
+  - status
+  - nip
+  - nama
+  - jabatan
+  - kategoriJabatan
+  - peran
+  - kategoriKebutuhanJamPelatihan
+properties:
+  username:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - '199701012022031001'
+  password:
+    type: string
+    format: password
+    minLength: 8
+    maxLength: 255
+    writeOnly: true
+    examples:
+      - 'password123'
+  bidangUuid:
+    type: string
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000010'
+  pangkatGolonganUuid:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000020'
+  tipe:
+    $ref: './PegawaiTipe.yaml'
+  status:
+    $ref: './PegawaiStatus.yaml'
+  nip:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - '199701012022031001'
+  nama:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'Agung Sapto Margono'
+  jabatan:
+    type:
+      - string
+      - 'null'
+    maxLength: 255
+    examples:
+      - 'Auditor Ahli Pertama'
+  kategoriJabatan:
+    anyOf:
+      - $ref: './KategoriJabatan.yaml'
+      - type: 'null'
+    examples:
+      - 'fungsional auditor'
+  peran:
+    type:
+      - string
+      - 'null'
+    maxLength: 255
+    examples:
+      - 'Anggota Tim'
+  kategoriKebutuhanJamPelatihan:
+    anyOf:
+      - $ref: './KategoriKebutuhanJamPelatihan.yaml'
+      - type: 'null'
+    examples:
+      - 'auditor'
+examples:
+  - username: '199701012022031001'
+    password: 'password123'
+    bidangUuid: '019352a1-7b40-7000-8000-000000000010'
+    pangkatGolonganUuid: '019352a1-7b40-7000-8000-000000000020'
+    tipe: 'pegawai'
+    status: 'aktif'
+    nip: '199701012022031001'
+    nama: 'Agung Sapto Margono'
+    jabatan: 'Auditor Ahli Pertama'
+    kategoriJabatan: 'fungsional auditor'
+    peran: 'Anggota Tim'
+    kategoriKebutuhanJamPelatihan: 'auditor'
