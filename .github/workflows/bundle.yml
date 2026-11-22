@@ -1,0 +1,41 @@
+name: Lint and Bundle OpenAPI Spec
+
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  bundle:
+    name: Lint & Bundle Spec
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint OpenAPI specification
+        run: npm run lint
+
+      - name: Bundle OpenAPI specification
+        run: npm run bundle
+
+      - name: Upload bundled specification
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-bundle
+          path: dist/openapi.yaml
+          if-no-files-found: error
