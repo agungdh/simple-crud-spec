@@ -78,6 +78,8 @@ components:
       $ref: './components/schemas/LoginRequest.yaml'
     LoginResponse:
       $ref: './components/schemas/LoginResponse.yaml'
+    UserResponse:
+      $ref: './components/schemas/UserResponse.yaml'
     BidangRequest:
       $ref: './components/schemas/BidangRequest.yaml'
     BidangResponse:
