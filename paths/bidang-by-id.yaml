@@ -1,18 +1,18 @@
 parameters:
-  - $ref: '../components/parameters/PangkatGolonganUuid.yaml'
+  - $ref: '../components/parameters/BidangUuid.yaml'
 get:
-  summary: Get Pangkat Golongan Detail
-  description: Mengambil detail satu pangkat golongan berdasarkan UUID.
-  operationId: getPangkatGolongan
+  summary: Get Bidang Detail
+  description: Mengambil detail satu bidang berdasarkan UUID.
+  operationId: getBidang
   tags:
-    - Pangkat Golongans
+    - Bidang
   responses:
     '200':
-      description: Detail pangkat golongan berhasil diambil
+      description: Detail bidang berhasil diambil
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/PangkatGolonganResponse.yaml'
+            $ref: '../components/schemas/BidangResponse.yaml'
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':
@@ -24,24 +24,24 @@ get:
     '5XX':
       $ref: '../components/responses/ServerError.yaml'
 put:
-  summary: Replace Pangkat Golongan
-  description: Memperbarui seluruh data pangkat golongan secara penuh (full replace).
-  operationId: updatePangkatGolongan
+  summary: Replace Bidang
+  description: Memperbarui seluruh data bidang secara penuh (full replace).
+  operationId: updateBidang
   tags:
-    - Pangkat Golongans
+    - Bidang
   requestBody:
     required: true
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/PangkatGolonganRequest.yaml'
+          $ref: '../components/schemas/BidangRequest.yaml'
   responses:
     '200':
-      description: Pangkat golongan berhasil diperbarui
+      description: Bidang berhasil diperbarui
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/PangkatGolonganResponse.yaml'
+            $ref: '../components/schemas/BidangResponse.yaml'
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':
@@ -55,14 +55,14 @@ put:
     '5XX':
       $ref: '../components/responses/ServerError.yaml'
 delete:
-  summary: Delete Pangkat Golongan
-  description: Menghapus data pangkat golongan berdasarkan UUID.
-  operationId: deletePangkatGolongan
+  summary: Delete Bidang
+  description: Menghapus data bidang berdasarkan UUID.
+  operationId: deleteBidang
   tags:
-    - Pangkat Golongans
+    - Bidang
   responses:
     '204':
-      description: Pangkat golongan berhasil dihapus
+      description: Bidang berhasil dihapus
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':

@@ -1,18 +1,18 @@
 parameters:
-  - $ref: '../components/parameters/PegawaiUuid.yaml'
+  - $ref: '../components/parameters/PangkatGolonganUuid.yaml'
 get:
-  summary: Get Pegawai Detail
-  description: Mengambil detail satu pegawai beserta informasi akun user berdasarkan UUID pegawai.
-  operationId: getPegawai
+  summary: Get Pangkat Golongan Detail
+  description: Mengambil detail satu pangkat golongan berdasarkan UUID.
+  operationId: getPangkatGolongan
   tags:
-    - Pegawais
+    - Pangkat Golongan
   responses:
     '200':
-      description: Detail pegawai berhasil diambil
+      description: Detail pangkat golongan berhasil diambil
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/PegawaiResponse.yaml'
+            $ref: '../components/schemas/PangkatGolonganResponse.yaml'
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':
@@ -24,26 +24,24 @@ get:
     '5XX':
       $ref: '../components/responses/ServerError.yaml'
 put:
-  summary: Replace Pegawai & User Account
-  description: >-
-    Memperbarui seluruh data pegawai dan username secara penuh (full replace).
-    Password dapat diisi null apabila tidak ingin mengganti password lama.
-  operationId: updatePegawai
+  summary: Replace Pangkat Golongan
+  description: Memperbarui seluruh data pangkat golongan secara penuh (full replace).
+  operationId: updatePangkatGolongan
   tags:
-    - Pegawais
+    - Pangkat Golongan
   requestBody:
     required: true
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/UpdatePegawaiRequest.yaml'
+          $ref: '../components/schemas/PangkatGolonganRequest.yaml'
   responses:
     '200':
-      description: Data pegawai berhasil diperbarui
+      description: Pangkat golongan berhasil diperbarui
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/PegawaiResponse.yaml'
+            $ref: '../components/schemas/PangkatGolonganResponse.yaml'
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':
@@ -57,14 +55,14 @@ put:
     '5XX':
       $ref: '../components/responses/ServerError.yaml'
 delete:
-  summary: Delete Pegawai & User Account
-  description: Menghapus data pegawai beserta akun user terkait (cascade delete).
-  operationId: deletePegawai
+  summary: Delete Pangkat Golongan
+  description: Menghapus data pangkat golongan berdasarkan UUID.
+  operationId: deletePangkatGolongan
   tags:
-    - Pegawais
+    - Pangkat Golongan
   responses:
     '204':
-      description: Pegawai dan akun user berhasil dihapus
+      description: Pangkat golongan berhasil dihapus
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':

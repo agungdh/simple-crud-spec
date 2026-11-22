@@ -1,9 +1,9 @@
 get:
-  summary: List Pangkat Golongans
+  summary: List Pangkat Golongan
   description: Mengambil daftar seluruh pangkat dan golongan.
-  operationId: listPangkatGolongans
+  operationId: listPangkatGolongan
   tags:
-    - Pangkat Golongans
+    - Pangkat Golongan
   responses:
     '200':
       description: Daftar pangkat golongan berhasil diambil
@@ -26,7 +26,7 @@ post:
   description: Menambahkan data pangkat golongan baru.
   operationId: createPangkatGolongan
   tags:
-    - Pangkat Golongans
+    - Pangkat Golongan
   requestBody:
     required: true
     content:
