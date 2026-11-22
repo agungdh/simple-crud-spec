@@ -1,0 +1,9 @@
+description: Tidak memiliki hak akses untuk resource ini
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/ErrorResponse.yaml'
+    examples:
+      forbidden:
+        value:
+          message: 'Forbidden'

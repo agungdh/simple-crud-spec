@@ -1,0 +1,11 @@
+name: uuid
+in: path
+required: true
+description: UUID unik pegawai
+schema:
+  type: string
+  format: uuid
+examples:
+  pegawai:
+    summary: Contoh UUID pegawai
+    value: 019352a1-7b40-7000-8000-000000000030

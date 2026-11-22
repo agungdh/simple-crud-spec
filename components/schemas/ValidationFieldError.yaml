@@ -1,0 +1,21 @@
+type: object
+description: Detail pesan validasi untuk satu atribut field.
+additionalProperties: false
+required:
+  - field
+  - messages
+properties:
+  field:
+    type: string
+    examples:
+      - 'bidangUuid'
+  messages:
+    type: array
+    items:
+      type: string
+    examples:
+      - - 'Bidang wajib diisi'
+examples:
+  - field: 'bidangUuid'
+    messages:
+      - 'Bidang wajib diisi'

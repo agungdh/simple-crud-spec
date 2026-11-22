@@ -1,0 +1,14 @@
+type: object
+description: Payload untuk membuat atau memperbarui bidang.
+additionalProperties: false
+required:
+  - bidang
+properties:
+  bidang:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'Inspektorat Pembantu Wilayah I'
+examples:
+  - bidang: 'Inspektorat Pembantu Wilayah I'

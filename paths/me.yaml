@@ -1,0 +1,25 @@
+get:
+  summary: Get Current Authenticated Pegawai
+  description: >-
+    Mengambil profil akun dan data pegawai yang sedang login sekaligus
+    memperpanjang masa aktif sesi (sliding session).
+  operationId: getCurrentUser
+  tags:
+    - Auth
+  responses:
+    '200':
+      description: Profil pengguna aktif berhasil diambil
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/PegawaiResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

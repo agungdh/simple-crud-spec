@@ -1,0 +1,7 @@
+type: string
+description: Status keaktifan pegawai.
+enum:
+  - aktif
+  - non aktif
+examples:
+  - 'aktif'

@@ -1,0 +1,13 @@
+type: object
+description: Response sukses login yang memuat opaque token sesi.
+additionalProperties: false
+required:
+  - token
+properties:
+  token:
+    type: string
+    description: Token sesi untuk disimpan di storage mobile/non-browser client
+    examples:
+      - '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'
+examples:
+  - token: '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'

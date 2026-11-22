@@ -1,0 +1,7 @@
+type: string
+description: Tipe peran atau akun pegawai.
+enum:
+  - pegawai
+  - admin
+examples:
+  - 'pegawai'

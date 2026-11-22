@@ -1,0 +1,5 @@
+description: Validasi input gagal
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/ValidationErrorResponse.yaml'

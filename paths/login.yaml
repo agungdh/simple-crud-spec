@@ -1,0 +1,37 @@
+post:
+  summary: User Login
+  description: >-
+    Melakukan autentikasi kredensial, mengembalikan opaque token di JSON body,
+    dan mengatur HttpOnly session cookie secara bersamaan.
+  operationId: loginUser
+  tags:
+    - Auth
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/LoginRequest.yaml'
+  responses:
+    '200':
+      description: Login berhasil
+      headers:
+        Set-Cookie:
+          description: HttpOnly session cookie untuk browser client (diabaikan oleh native mobile client)
+          schema:
+            type: string
+            examples:
+              - 'session_id=9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400'
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/LoginResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '422':
+      $ref: '../components/responses/UnprocessableEntity.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

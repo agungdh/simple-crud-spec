@@ -1,0 +1,101 @@
+type: object
+description: Payload full replacement untuk memperbarui data pegawai dan username.
+additionalProperties: false
+required:
+  - username
+  - password
+  - bidangUuid
+  - pangkatGolonganUuid
+  - tipe
+  - status
+  - nip
+  - nama
+  - jabatan
+  - kategoriJabatan
+  - peran
+  - kategoriKebutuhanJamPelatihan
+properties:
+  username:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - '199701012022031001'
+  password:
+    type:
+      - string
+      - 'null'
+    format: password
+    minLength: 8
+    maxLength: 255
+    writeOnly: true
+    description: Isi null jika tidak ingin mengubah password
+    examples:
+      - null
+  bidangUuid:
+    type: string
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000010'
+  pangkatGolonganUuid:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000020'
+  tipe:
+    $ref: './PegawaiTipe.yaml'
+  status:
+    $ref: './PegawaiStatus.yaml'
+  nip:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - '199701012022031001'
+  nama:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'Agung Sapto Margono'
+  jabatan:
+    type:
+      - string
+      - 'null'
+    maxLength: 255
+    examples:
+      - 'Auditor Ahli Pertama'
+  kategoriJabatan:
+    anyOf:
+      - $ref: './KategoriJabatan.yaml'
+      - type: 'null'
+    examples:
+      - 'fungsional auditor'
+  peran:
+    type:
+      - string
+      - 'null'
+    maxLength: 255
+    examples:
+      - 'Anggota Tim'
+  kategoriKebutuhanJamPelatihan:
+    anyOf:
+      - $ref: './KategoriKebutuhanJamPelatihan.yaml'
+      - type: 'null'
+    examples:
+      - 'auditor'
+examples:
+  - username: '199701012022031001'
+    password: null
+    bidangUuid: '019352a1-7b40-7000-8000-000000000010'
+    pangkatGolonganUuid: '019352a1-7b40-7000-8000-000000000020'
+    tipe: 'pegawai'
+    status: 'aktif'
+    nip: '199701012022031001'
+    nama: 'Agung Sapto Margono'
+    jabatan: 'Auditor Ahli Pertama'
+    kategoriJabatan: 'fungsional auditor'
+    peran: 'Anggota Tim'
+    kategoriKebutuhanJamPelatihan: 'auditor'

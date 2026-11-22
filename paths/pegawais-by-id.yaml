@@ -1,0 +1,77 @@
+parameters:
+  - $ref: '../components/parameters/PegawaiUuid.yaml'
+get:
+  summary: Get Pegawai Detail
+  description: Mengambil detail satu pegawai beserta informasi akun user berdasarkan UUID pegawai.
+  operationId: getPegawai
+  tags:
+    - Pegawais
+  responses:
+    '200':
+      description: Detail pegawai berhasil diambil
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/PegawaiResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+put:
+  summary: Replace Pegawai & User Account
+  description: >-
+    Memperbarui seluruh data pegawai dan username secara penuh (full replace).
+    Password dapat diisi null apabila tidak ingin mengganti password lama.
+  operationId: updatePegawai
+  tags:
+    - Pegawais
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/UpdatePegawaiRequest.yaml'
+  responses:
+    '200':
+      description: Data pegawai berhasil diperbarui
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/PegawaiResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '422':
+      $ref: '../components/responses/UnprocessableEntity.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+delete:
+  summary: Delete Pegawai & User Account
+  description: Menghapus data pegawai beserta akun user terkait (cascade delete).
+  operationId: deletePegawai
+  tags:
+    - Pegawais
+  responses:
+    '204':
+      description: Pegawai dan akun user berhasil dihapus
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

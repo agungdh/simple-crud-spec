@@ -1,0 +1,8 @@
+type: string
+description: Kategori jabatan fungsional atau struktural pegawai.
+enum:
+  - struktural
+  - fungsional auditor
+  - fungsional tertentu
+examples:
+  - 'fungsional auditor'

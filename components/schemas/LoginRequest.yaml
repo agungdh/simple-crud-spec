@@ -1,0 +1,24 @@
+type: object
+description: Payload kredensial untuk autentikasi user.
+additionalProperties: false
+required:
+  - username
+  - password
+properties:
+  username:
+    type: string
+    minLength: 1
+    maxLength: 255
+    examples:
+      - 'agung'
+  password:
+    type: string
+    format: password
+    minLength: 8
+    maxLength: 255
+    writeOnly: true
+    examples:
+      - 'rahasia123'
+examples:
+  - username: 'agung'
+    password: 'rahasia123'

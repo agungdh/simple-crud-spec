@@ -1,0 +1,75 @@
+parameters:
+  - $ref: '../components/parameters/PangkatGolonganUuid.yaml'
+get:
+  summary: Get Pangkat Golongan Detail
+  description: Mengambil detail satu pangkat golongan berdasarkan UUID.
+  operationId: getPangkatGolongan
+  tags:
+    - Pangkat Golongans
+  responses:
+    '200':
+      description: Detail pangkat golongan berhasil diambil
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/PangkatGolonganResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+put:
+  summary: Replace Pangkat Golongan
+  description: Memperbarui seluruh data pangkat golongan secara penuh (full replace).
+  operationId: updatePangkatGolongan
+  tags:
+    - Pangkat Golongans
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/PangkatGolonganRequest.yaml'
+  responses:
+    '200':
+      description: Pangkat golongan berhasil diperbarui
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/PangkatGolonganResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '422':
+      $ref: '../components/responses/UnprocessableEntity.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+delete:
+  summary: Delete Pangkat Golongan
+  description: Menghapus data pangkat golongan berdasarkan UUID.
+  operationId: deletePangkatGolongan
+  tags:
+    - Pangkat Golongans
+  responses:
+    '204':
+      description: Pangkat golongan berhasil dihapus
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

@@ -1,0 +1,75 @@
+parameters:
+  - $ref: '../components/parameters/BidangUuid.yaml'
+get:
+  summary: Get Bidang Detail
+  description: Mengambil detail satu bidang berdasarkan UUID.
+  operationId: getBidang
+  tags:
+    - Bidangs
+  responses:
+    '200':
+      description: Detail bidang berhasil diambil
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/BidangResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+put:
+  summary: Replace Bidang
+  description: Memperbarui seluruh data bidang secara penuh (full replace).
+  operationId: updateBidang
+  tags:
+    - Bidangs
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/BidangRequest.yaml'
+  responses:
+    '200':
+      description: Bidang berhasil diperbarui
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/BidangResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '422':
+      $ref: '../components/responses/UnprocessableEntity.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+delete:
+  summary: Delete Bidang
+  description: Menghapus data bidang berdasarkan UUID.
+  operationId: deleteBidang
+  tags:
+    - Bidangs
+  responses:
+    '204':
+      description: Bidang berhasil dihapus
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '404':
+      $ref: '../components/responses/NotFound.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

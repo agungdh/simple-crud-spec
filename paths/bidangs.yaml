@@ -1,0 +1,52 @@
+get:
+  summary: List Bidangs
+  description: Mengambil daftar seluruh bidang.
+  operationId: listBidangs
+  tags:
+    - Bidangs
+  responses:
+    '200':
+      description: Daftar bidang berhasil diambil
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/BidangResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'
+post:
+  summary: Create Bidang
+  description: Menambahkan data bidang baru.
+  operationId: createBidang
+  tags:
+    - Bidangs
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/BidangRequest.yaml'
+  responses:
+    '201':
+      description: Bidang berhasil dibuat
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/BidangResponse.yaml'
+    '400':
+      $ref: '../components/responses/BadRequest.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '403':
+      $ref: '../components/responses/Forbidden.yaml'
+    '422':
+      $ref: '../components/responses/UnprocessableEntity.yaml'
+    '5XX':
+      $ref: '../components/responses/ServerError.yaml'

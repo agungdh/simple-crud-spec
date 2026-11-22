@@ -1,0 +1,9 @@
+description: Kesalahan internal server yang tidak terduga
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/ErrorResponse.yaml'
+    examples:
+      serverError:
+        value:
+          message: 'Internal Server Error'

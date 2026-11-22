@@ -1,0 +1,94 @@
+type: object
+description: Representasi detail data pegawai beserta akun user terkait.
+additionalProperties: false
+required:
+  - uuid
+  - userUuid
+  - username
+  - bidangUuid
+  - pangkatGolonganUuid
+  - tipe
+  - status
+  - nip
+  - nama
+  - jabatan
+  - kategoriJabatan
+  - peran
+  - kategoriKebutuhanJamPelatihan
+properties:
+  uuid:
+    type: string
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000030'
+  userUuid:
+    type: string
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000001'
+  username:
+    type: string
+    examples:
+      - '199701012022031001'
+  bidangUuid:
+    type: string
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000010'
+  pangkatGolonganUuid:
+    type:
+      - string
+      - 'null'
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000020'
+  tipe:
+    $ref: './PegawaiTipe.yaml'
+  status:
+    $ref: './PegawaiStatus.yaml'
+  nip:
+    type: string
+    examples:
+      - '199701012022031001'
+  nama:
+    type: string
+    examples:
+      - 'Agung Sapto Margono'
+  jabatan:
+    type:
+      - string
+      - 'null'
+    examples:
+      - 'Auditor Ahli Pertama'
+  kategoriJabatan:
+    anyOf:
+      - $ref: './KategoriJabatan.yaml'
+      - type: 'null'
+    examples:
+      - 'fungsional auditor'
+  peran:
+    type:
+      - string
+      - 'null'
+    examples:
+      - 'Anggota Tim'
+  kategoriKebutuhanJamPelatihan:
+    anyOf:
+      - $ref: './KategoriKebutuhanJamPelatihan.yaml'
+      - type: 'null'
+    examples:
+      - 'auditor'
+examples:
+  - uuid: '019352a1-7b40-7000-8000-000000000030'
+    userUuid: '019352a1-7b40-7000-8000-000000000001'
+    username: '199701012022031001'
+    bidangUuid: '019352a1-7b40-7000-8000-000000000010'
+    pangkatGolonganUuid: '019352a1-7b40-7000-8000-000000000020'
+    tipe: 'pegawai'
+    status: 'aktif'
+    nip: '199701012022031001'
+    nama: 'Agung Sapto Margono'
+    jabatan: 'Auditor Ahli Pertama'
+    kategoriJabatan: 'fungsional auditor'
+    peran: 'Anggota Tim'
+    kategoriKebutuhanJamPelatihan: 'auditor'
