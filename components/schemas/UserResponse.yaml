@@ -1,0 +1,19 @@
+type: object
+description: Representasi data akun user terkait.
+additionalProperties: false
+required:
+  - uuid
+  - username
+properties:
+  uuid:
+    type: string
+    format: uuid
+    examples:
+      - '019352a1-7b40-7000-8000-000000000001'
+  username:
+    type: string
+    examples:
+      - '199701012022031001'
+examples:
+  - uuid: '019352a1-7b40-7000-8000-000000000001'
+    username: '199701012022031001'

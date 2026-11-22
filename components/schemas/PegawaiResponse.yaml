@@ -1,10 +1,9 @@
 type: object
-description: Representasi detail data pegawai beserta akun user terkait.
+description: Representasi detail data pegawai beserta relasi akun user, bidang, dan pangkat golongan yang dimuat.
 additionalProperties: false
 required:
   - uuid
   - userUuid
-  - username
   - bidangUuid
   - pangkatGolonganUuid
   - tipe
@@ -15,6 +14,9 @@ required:
   - kategoriJabatan
   - peran
   - kategoriKebutuhanJamPelatihan
+  - user
+  - bidang
+  - pangkatGolongan
 properties:
   uuid:
     type: string
@@ -26,10 +28,6 @@ properties:
     format: uuid
     examples:
       - '019352a1-7b40-7000-8000-000000000001'
-  username:
-    type: string
-    examples:
-      - '199701012022031001'
   bidangUuid:
     type: string
     format: uuid
@@ -78,10 +76,17 @@ properties:
       - type: 'null'
     examples:
       - 'auditor'
+  user:
+    $ref: './UserResponse.yaml'
+  bidang:
+    $ref: './BidangResponse.yaml'
+  pangkatGolongan:
+    anyOf:
+      - $ref: './PangkatGolonganResponse.yaml'
+      - type: 'null'
 examples:
   - uuid: '019352a1-7b40-7000-8000-000000000030'
     userUuid: '019352a1-7b40-7000-8000-000000000001'
-    username: '199701012022031001'
     bidangUuid: '019352a1-7b40-7000-8000-000000000010'
     pangkatGolonganUuid: '019352a1-7b40-7000-8000-000000000020'
     tipe: 'pegawai'
@@ -92,3 +97,15 @@ examples:
     kategoriJabatan: 'fungsional auditor'
     peran: 'Anggota Tim'
     kategoriKebutuhanJamPelatihan: 'auditor'
+    user:
+      uuid: '019352a1-7b40-7000-8000-000000000001'
+      username: '199701012022031001'
+    bidang:
+      uuid: '019352a1-7b40-7000-8000-000000000010'
+      bidang: 'Inspektorat Pembantu Wilayah I'
+    pangkatGolongan:
+      uuid: '019352a1-7b40-7000-8000-000000000020'
+      jenjang: 'Penata'
+      pangkat: 'Penata Muda Tingkat I'
+      golongan: 'III'
+      ruang: 'b'

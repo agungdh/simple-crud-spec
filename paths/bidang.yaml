@@ -1,9 +1,9 @@
 get:
-  summary: List Bidangs
+  summary: List Bidang
   description: Mengambil daftar seluruh bidang.
-  operationId: listBidangs
+  operationId: listBidang
   tags:
-    - Bidangs
+    - Bidang
   responses:
     '200':
       description: Daftar bidang berhasil diambil
@@ -26,7 +26,7 @@ post:
   description: Menambahkan data bidang baru.
   operationId: createBidang
   tags:
-    - Bidangs
+    - Bidang
   requestBody:
     required: true
     content:

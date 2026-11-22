@@ -1,9 +1,9 @@
 get:
-  summary: List Pegawais
+  summary: List Pegawai
   description: Mengambil daftar seluruh pegawai beserta informasi akun user (1-to-1).
-  operationId: listPegawais
+  operationId: listPegawai
   tags:
-    - Pegawais
+    - Pegawai
   responses:
     '200':
       description: Daftar pegawai berhasil diambil
@@ -28,7 +28,7 @@ post:
     secara atomik dalam relasi 1-to-1.
   operationId: createPegawai
   tags:
-    - Pegawais
+    - Pegawai
   requestBody:
     required: true
     content:

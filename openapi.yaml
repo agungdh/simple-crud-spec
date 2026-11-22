@@ -19,11 +19,11 @@ servers:
 tags:
   - name: Auth
     description: Manajemen autentikasi dan sesi pengguna
-  - name: Bidangs
+  - name: Bidang
     description: Manajemen master data bidang
-  - name: Pangkat Golongans
+  - name: Pangkat Golongan
     description: Manajemen master data pangkat dan golongan
-  - name: Pegawais
+  - name: Pegawai
     description: Manajemen data pegawai dan akun pengguna (relasi 1-to-1)
 security:
   - bearerAuth: []
@@ -35,18 +35,18 @@ paths:
     $ref: './paths/logout.yaml'
   /me:
     $ref: './paths/me.yaml'
-  /bidangs:
-    $ref: './paths/bidangs.yaml'
-  /bidangs/{uuid}:
-    $ref: './paths/bidangs-by-id.yaml'
-  /pangkat-golongans:
-    $ref: './paths/pangkat-golongans.yaml'
-  /pangkat-golongans/{uuid}:
-    $ref: './paths/pangkat-golongans-by-id.yaml'
-  /pegawais:
-    $ref: './paths/pegawais.yaml'
-  /pegawais/{uuid}:
-    $ref: './paths/pegawais-by-id.yaml'
+  /bidang:
+    $ref: './paths/bidang.yaml'
+  /bidang/{uuid}:
+    $ref: './paths/bidang-by-id.yaml'
+  /pangkat-golongan:
+    $ref: './paths/pangkat-golongan.yaml'
+  /pangkat-golongan/{uuid}:
+    $ref: './paths/pangkat-golongan-by-id.yaml'
+  /pegawai:
+    $ref: './paths/pegawai.yaml'
+  /pegawai/{uuid}:
+    $ref: './paths/pegawai-by-id.yaml'
 components:
   securitySchemes:
     bearerAuth:
@@ -78,6 +78,8 @@ components:
       $ref: './components/schemas/LoginRequest.yaml'
     LoginResponse:
       $ref: './components/schemas/LoginResponse.yaml'
+    UserResponse:
+      $ref: './components/schemas/UserResponse.yaml'
     BidangRequest:
       $ref: './components/schemas/BidangRequest.yaml'
     BidangResponse:

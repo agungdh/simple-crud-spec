@@ -1,18 +1,18 @@
 parameters:
-  - $ref: '../components/parameters/BidangUuid.yaml'
+  - $ref: '../components/parameters/PegawaiUuid.yaml'
 get:
-  summary: Get Bidang Detail
-  description: Mengambil detail satu bidang berdasarkan UUID.
-  operationId: getBidang
+  summary: Get Pegawai Detail
+  description: Mengambil detail satu pegawai beserta informasi akun user berdasarkan UUID pegawai.
+  operationId: getPegawai
   tags:
-    - Bidangs
+    - Pegawai
   responses:
     '200':
-      description: Detail bidang berhasil diambil
+      description: Detail pegawai berhasil diambil
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/BidangResponse.yaml'
+            $ref: '../components/schemas/PegawaiResponse.yaml'
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':
@@ -24,24 +24,26 @@ get:
     '5XX':
       $ref: '../components/responses/ServerError.yaml'
 put:
-  summary: Replace Bidang
-  description: Memperbarui seluruh data bidang secara penuh (full replace).
-  operationId: updateBidang
+  summary: Replace Pegawai & User Account
+  description: >-
+    Memperbarui seluruh data pegawai dan username secara penuh (full replace).
+    Password dapat diisi null apabila tidak ingin mengganti password lama.
+  operationId: updatePegawai
   tags:
-    - Bidangs
+    - Pegawai
   requestBody:
     required: true
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/BidangRequest.yaml'
+          $ref: '../components/schemas/UpdatePegawaiRequest.yaml'
   responses:
     '200':
-      description: Bidang berhasil diperbarui
+      description: Data pegawai berhasil diperbarui
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/BidangResponse.yaml'
+            $ref: '../components/schemas/PegawaiResponse.yaml'
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':
@@ -55,14 +57,14 @@ put:
     '5XX':
       $ref: '../components/responses/ServerError.yaml'
 delete:
-  summary: Delete Bidang
-  description: Menghapus data bidang berdasarkan UUID.
-  operationId: deleteBidang
+  summary: Delete Pegawai & User Account
+  description: Menghapus data pegawai beserta akun user terkait (cascade delete).
+  operationId: deletePegawai
   tags:
-    - Bidangs
+    - Pegawai
   responses:
     '204':
-      description: Bidang berhasil dihapus
+      description: Pegawai dan akun user berhasil dihapus
     '400':
       $ref: '../components/responses/BadRequest.yaml'
     '401':
